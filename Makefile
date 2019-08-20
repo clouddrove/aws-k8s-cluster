@@ -51,16 +51,16 @@ info:
 	@echo 	EC2_VM    	     	:: ${EC2_VM}
 	@echo 	EC2_REGION      	:: ${EC2_REGION}
 	@echo 	DISK_SIZE       	:: ${DISK_SIZE}
+	@echo 	MIN_NODES       	:: ${MIN_NODES}
 	@echo 	MAX_NODES       	:: ${MAX_NODES}
-
 ## Create an EKS cluster on AWS
 create:
 	eksctl create cluster \
 		--name $(CLUSTER_NAME) \
 		--asg-access \
 		--full-ecr-access \
-		--nodes 1 \
-		--nodes-min 1 \
+		--nodes $(MIN_NODES) \
+		--nodes-min $(MIN_NODES) \
 		--nodes-max $(MAX_NODES) \
 		--node-type $(EC2_VM) \
 		--node-volume-size $(DISK_SIZE) \
