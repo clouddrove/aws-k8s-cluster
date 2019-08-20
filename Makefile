@@ -20,10 +20,10 @@ HAS_EKSCTL := $(shell command -v eksctl;)
 deps:
 	@# Required auth and binaries for EKS
 ifndef HAS_AWSCLI
-	pip install awscli --upgrade --user
+	sudo pip install awscli
 endif
 	@if [ ! -f ~/.aws/credentials ]; then \
-		aws configure
+		aws configure; \
 	fi
 ifndef HAS_EKSCTL
 	curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -37,7 +37,7 @@ endif
 
 .PHONY: create
 create: deps
-	@# Create an EKS cluster
+	@# Create an EKS cluster on AWS
 	@# Options
 	@#     CLUSTER_NAME    :: ${CLUSTER_NAME}
 	@#     EC2_VM          :: ${EC2_VM}
@@ -60,7 +60,7 @@ create: deps
 
 .PHONY: delete
 delete: deps
-	@# Delete an EKS cluster
+	@# Delete an EKS cluster on AWS
 	@# Options
 	@#     CLUSTER_NAME    :: ${CLUSTER_NAME}
 	@#     EC2_REGION      :: ${EC2_REGION}
