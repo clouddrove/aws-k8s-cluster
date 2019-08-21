@@ -14,8 +14,10 @@ RESET  := $(shell tput -Txterm sgr0)
 export CLUSTER_NAME ?= $(shell cat /tmp/current 2>/dev/null || echo $$(whoami)-dev)
 export DISK_SIZE ?= 100
 export MAX_NODES ?= 2
+export MIN_NODES ?= 1
 export EC2_VM ?= t2.nano
 export EC2_REGION ?= eu-west-1
+export PROFILE ?= default
 
 HAS_KUBECTL := $(shell command -v kubectl;)
 HAS_AWSCLI := $(shell command -v aws;)
@@ -37,12 +39,12 @@ endif
 	fi
 ifndef HAS_EKSCTL
 	curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-	sudo mv /tmp/eksctl /usr/local/bin
+	mv /tmp/eksctl /usr/local/bin
 endif
 ifndef HAS_KUBECTL
 	curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 	chmod +x ./kubectl
-	sudo mv ./kubectl /usr/local/bin/kubectl
+	mv ./kubectl /usr/local/bin/kubectl
 endif
 
 ## Show EKS cluster info
@@ -53,6 +55,7 @@ info:
 	@echo 	DISK_SIZE       	:: ${DISK_SIZE}
 	@echo 	MIN_NODES       	:: ${MIN_NODES}
 	@echo 	MAX_NODES       	:: ${MAX_NODES}
+	@echo 	PROFILE       	    :: ${PROFILE}
 ## Create an EKS cluster on AWS
 create:
 	eksctl create cluster \
@@ -66,17 +69,14 @@ create:
 		--node-volume-size $(DISK_SIZE) \
 		--max-pods-per-node 10 \
 		--region $(EC2_REGION) \
+		--profile $(PROFILE) \
 		--set-kubeconfig-context
 
 ## Destroy EKS cluster on AWS
-destory:
-	@# Delete an EKS cluster on AWS
-	@# Options
-	@#     CLUSTER_NAME    :: ${CLUSTER_NAME}
-	@#     EC2_REGION      :: ${EC2_REGION}
-
+destroy:
 	eksctl delete cluster \
 		--name $(CLUSTER_NAME) \
+		--profile $(PROFILE) \
 		--region $(EC2_REGION)
 
 ################################################################################
@@ -94,7 +94,7 @@ help:
 	@awk '/^[a-zA-Z\-\_0-9]+:/ { \
 		helpMessage = match(lastLine, /^## (.*)/); \
 		if (helpMessage) { \
-			helpCommand = substr($$1, 0, index($$1, ":")-1); \
+			helpCommand = substr($$1, 0, index($$1, ":")); \
 			helpMessage = substr(lastLine, RSTART + 3, RLENGTH); \
 			printf "  ${YELLOW}%-$(TARGET_MAX_CHAR_NUM)s${RESET} ${GREEN}%s${RESET}\n", helpCommand, helpMessage; \
 		} \
