@@ -1,17 +1,10 @@
-<h1 align='center'>AWS K8s Cluster</h1><p align='center' style='font-size: 1.2rem;''> This repo is used to create and delete K8s Cluster on AWS. </p>	<p align='center'>	<a href='https://facebook.com/sharer/sharer.php?u=https://github.com/clouddrove/aws-k8s-cluster'>	  <img title='Share on Facebook' src='https://user-images.githubusercontent.com/50652676/62817743-4f64cb80-bb59-11e9-90c7-b057252ded50.png' />	</a>	<a href='https://www.linkedin.com/shareArticle?mini=true&title=aws+k8s+clustert&url=https://github.com/clouddrove/aws-k8s-cluster'>	  <img title='Share on LinkedIn' src='https://user-images.githubusercontent.com/50652676/62817742-4e339e80-bb59-11e9-87b9-a1f68cae1049.png' />	</a>	<a href='https://twitter.com/intent/tweet/?text=aws+k8s+cluster&url=https://github.com/clouddrove/aws-k8s-cluster'>	  <img title='Share on Twitter' src='https://user-images.githubusercontent.com/50652676/62817740-4c69db00-bb59-11e9-8a79-3580fbbf6d5c.png' />	</a>	</p>	<hr>
+<h1 align='center'>AWS K8s Cluster</h1><p align='center' style='font-size: 1.2rem;''> This repo is used to manage K8s Cluster on AWS for Testing Environment not Production Environment. </p>	<p align='center'>	<a href='https://facebook.com/sharer/sharer.php?u=https://github.com/clouddrove/aws-k8s-cluster'>	  <img title='Share on Facebook' src='https://user-images.githubusercontent.com/50652676/62817743-4f64cb80-bb59-11e9-90c7-b057252ded50.png' />	</a>	<a href='https://www.linkedin.com/shareArticle?mini=true&title=aws+k8s+clustert&url=https://github.com/clouddrove/aws-k8s-cluster'>	  <img title='Share on LinkedIn' src='https://user-images.githubusercontent.com/50652676/62817742-4e339e80-bb59-11e9-87b9-a1f68cae1049.png' />	</a>	<a href='https://twitter.com/intent/tweet/?text=aws+k8s+cluster&url=https://github.com/clouddrove/aws-k8s-cluster'>	  <img title='Share on Twitter' src='https://user-images.githubusercontent.com/50652676/62817740-4c69db00-bb59-11e9-8a79-3580fbbf6d5c.png' />	</a>	</p>	<hr>
 
 ## How to use
 
-These are some make commands which is used for manage K8s Cluster on AWS:
+This can be easily managed with some simple commands.
 
-```command
-make prepare
-make create
-make destroy
-make info
-make help
-
-```
+<img src="https://user-images.githubusercontent.com/50652676/63420368-292a1000-c424-11e9-8fda-0cf623b0104b.png">
 
 
 ## Feedback
