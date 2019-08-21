@@ -4,12 +4,12 @@
 
 These are some make commands which is used for manage K8s Cluster on AWS:
 
-	```command
-		make help
-		make create
-		make delete
-		make deps
-	```
+```command
+make help
+make create
+make delete
+make deps
+```
 
 
 ## Feedback
