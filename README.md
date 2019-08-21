@@ -4,7 +4,7 @@
 
 These are some make commands which is used for manage K8s Cluster on AWS:
 
-	```commands
+	```command
 		make help
 		make create
 		make delete
