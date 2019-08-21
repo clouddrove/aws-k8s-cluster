@@ -11,7 +11,7 @@ This can be easily managed with some simple commands.
 
 If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/clouddrove/aws-k8s-cluster/issues), or feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
 
-If you have found it worth your time, go ahead and give us a * on [our GitHub](https://github.com/clouddrove/aws-k8s-cluster)!
+If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/clouddrove/aws-k8s-cluster)!
 
 ## About us
 
