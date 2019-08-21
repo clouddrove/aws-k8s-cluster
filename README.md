@@ -5,11 +5,12 @@
 These are some make commands which is used for manage K8s Cluster on AWS:
 
 ```command
-	make prepare
-	make create
-	make destroy
-	make info
-	make help
+make prepare
+make create
+make destroy
+make info
+make help
+
 ```
 
 
